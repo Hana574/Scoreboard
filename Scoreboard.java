@@ -18,15 +18,18 @@ public class Scoreboard
     }
     public void recordPlay(int score)
     {
-        if (score == 0)
+        if(teamOne.equals(activeTeam))
         {
-            if (activeTeam == teamOne) activeTeam = teamTwo;
-            else activeTeam = teamOne;
+            teamOneScore += score;
         }
-        else
+        else if(teamTwo.equals(activeTeam))
         {
-            if (activeTeam == teamOne) teamOneScore = teamOneScore + score;
-            else teamTwoScore = teamTwoScore + score;
+            teamTwoScore += score;
+        }
+        if(score == 0)
+        {
+            if(activeTeam.equals(teamOne)) activeTeam = teamTwo;
+            else if(activeTeam.equals(teamTwo)) activeTeam = teamOne;
         }
     }
 }
